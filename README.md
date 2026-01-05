@@ -1,8 +1,7 @@
-# personal-rag-assistant
-A smart AI-powered Personal RAG Assistant that enables users to upload documents and interact with them through natural language questions using Retrieval-Augmented Generation (RAG).
+
 # Personal RAG Assistant 🤖📄
 
-A **Personal RAG (Retrieval-Augmented Generation) Assistant** that enables users to upload documents and ask AI-powered questions based on the uploaded content.
+A **Personal RAG (Retrieval-Augmented Generation) Assistant**  smart AI-powered Personal RAG Assistant that enables users to upload documents and interact with them through natural language questions using Retrieval-Augmented Generation (RAG).
 
 ---
 
