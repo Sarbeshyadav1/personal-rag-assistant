@@ -1,72 +1,84 @@
+# Personal RAG Assistant (MVP)
 
-# Personal RAG Assistant 🤖📄
+A minimal Retrieval-Augmented Generation (RAG) system that lets you upload documents, builds a local FAISS index, and answers questions using OpenAI's models.
 
-A **Personal RAG (Retrieval-Augmented Generation) Assistant**  smart AI-powered Personal RAG Assistant that enables users to upload documents and interact with them through natural language questions using Retrieval-Augmented Generation (RAG).
+## 🚀 Quickstart
 
----
+1. Copy `.env.example` to `.env` and set `OPENAI_API_KEY`.
+2. Create a virtual environment and install dependencies:
 
-## 🔍 What is RAG?
-Retrieval-Augmented Generation (RAG) is an AI approach that combines:
-- Document retrieval
-- Large Language Models (LLMs)
-
-to generate accurate, context-aware answers from user-provided documents.
-
----
-
-## ✨ Features
-- 📂 Upload and process documents
-- 🧠 AI-powered question answering
-- 📊 Tracks document and question count
-- ⚡ Clean and user-friendly interface
-- 🔐 Personal document-based AI assistant
-
----
-
-## 🧠 System Architecture (Theory)
-1. Document upload by user  
-2. Text extraction from documents  
-3. Embedding generation  
-4. Storage in vector database  
-5. Query embedding creation  
-6. Context retrieval  
-7. AI-generated response  
-
----
-
-## 🛠️ Tech Stack
-- Frontend: HTML, CSS, JavaScript (or React)
-- Backend: Python (Flask / FastAPI)
-- AI Model: Large Language Model (LLM)
-- Vector Store: FAISS / ChromaDB
-- Embeddings: OpenAI / HuggingFace
-
----
-
-## 🚀 How to Run the Project Locally
-
-### 🔹 Prerequisites
-- Python 3.10+
-- Git
-
-### 🔹 Steps
 ```bash
-git clone https://github.com/Sarbeshyadav1/personal-rag-assistant.git
-cd personal-rag-assistant
-
-python -m venv venv
-venv\Scripts\activate
-
+python -m venv .venv
+# Windows (CMD)
+.\.venv\Scripts\activate
+# macOS/Linux
+source .venv/bin/activate
 pip install -r requirements.txt
-python app.py
+```
 
-http://localhost:8000
+1. Run the backend server:
 
+```bash
+uvicorn backend.main:app --reload --port 8000
+```
 
+Or use Docker Compose:
+
+```bash
+docker-compose up --build -d
+```
+
+1. Open `frontend/index.html` in your browser and upload a file (pdf/txt/docx/md).
+
+## 📁 Project Structure
+
+```
 personal-rag-assistant/
-│── app.py
-│── requirements.txt
-│── templates/
-│── static/
-│── uploads/
-│── README.md
+├── backend/
+│   ├── __init__.py
+│   ├── main.py
+│   ├── ingest.py
+│   └── utils.py
+├── frontend/
+│   └── index.html
+├── uploads/
+├── faiss_index/
+├── .env.example
+├── .env
+├── .gitignore
+├── requirements.txt
+├── requirements-dev.txt
+├── Dockerfile
+├── docker-compose.yml
+├── README.md
+└── app.py
+```
+
+## 🧪 Running tests
+
+- Create and activate a venv, then install dev deps:
+
+```bash
+pip install -r requirements-dev.txt
+```
+
+- Run tests:
+
+```bash
+python -m pytest -q
+```
+
+## ⚠️ Notes & Limitations
+
+- Single FAISS index (ingest overwrites index).
+- No authentication or multi-user support.
+- Local storage only.
+
+## 🚀 Next steps
+
+- Add CI tests (added GitHub Actions workflow to run pytest on push/PR).
+- Consider adding per-user indices and persistent storage (pgvector).
+
+---
+
+If you want, I can set up the virtual environment in this workspace and run the tests for you.
